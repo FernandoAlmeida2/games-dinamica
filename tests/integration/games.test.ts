@@ -1,11 +1,11 @@
 import { faker } from "@faker-js/faker";
-import app, { init } from "app";
-import { prisma } from "../src/config/database";
+import app, { init } from "../../src/app";
+import { prisma } from "../../src/config/database";
 import httpStatus from "http-status";
 import supertest from "supertest";
-import { createConsole } from "./factories/consoles-factory";
-import { createGame } from "./factories/games-factory";
-import { cleanDb } from "./helpers";
+import { createConsole } from "../factories/consoles-factory";
+import { createGame } from "../factories/games-factory";
+import { cleanDb } from "../helpers";
 
 beforeAll(async () => {
     await init();

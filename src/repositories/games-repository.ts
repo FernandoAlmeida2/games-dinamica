@@ -2,7 +2,7 @@ import { prisma } from "../config/database";
 import { GameInput } from "../services/games-service";
 
 async function getGames() {
-  return await prisma.game.findMany({
+  return prisma.game.findMany({
     include: {
       Console: true,
     },
@@ -10,13 +10,13 @@ async function getGames() {
 }
 
 async function getSpecificGame(id: number) {
-  return await prisma.game.findFirst({
+  return prisma.game.findFirst({
     where: { id },
   });
 }
 
 async function getSpecificGameByName(title: string) {
-  return await prisma.game.findFirst({
+  return prisma.game.findFirst({
     where: {
       title,
     },

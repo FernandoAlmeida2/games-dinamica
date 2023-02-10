@@ -2,7 +2,9 @@ import express, { json, Request, Response, Express } from "express";
 import "express-async-errors";
 import gamesRouter from "./routers/games-router";
 import consolesRouter from "./routers/consoles-router";
-import { connectDb, disconnectDb } from "config/database";
+import { connectDb, disconnectDb } from "./config/database";
+import dotenv from "dotenv";
+dotenv.config();
 
 const app = express();
 app.use(json());
@@ -12,12 +14,12 @@ app.use(gamesRouter);
 app.use(consolesRouter);
 
 export function init(): Promise<Express> {
-    connectDb();
-    return Promise.resolve(app);
-  }
+  connectDb();
+  return Promise.resolve(app);
+}
 
-  export async function close(): Promise<void> {
-    await disconnectDb();
-  }
+export async function close(): Promise<void> {
+  await disconnectDb();
+}
 
 export default app;

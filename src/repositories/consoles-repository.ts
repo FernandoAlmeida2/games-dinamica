@@ -2,17 +2,17 @@ import { prisma } from "../config/database";
 import { ConsoleInput } from "../services/consoles-service";
 
 async function getConsoles() {
-  return await prisma.console.findMany();
+  return prisma.console.findMany();
 }
 
 async function getSpecificConsole(id: number) {
-  return await prisma.console.findFirst({
+  return prisma.console.findFirst({
     where: { id },
   });
 }
 
 async function getSpecificConsoleByName(name: string) {
-  return await prisma.console.findFirst({
+  return prisma.console.findFirst({
     where: {
       name,
     },
